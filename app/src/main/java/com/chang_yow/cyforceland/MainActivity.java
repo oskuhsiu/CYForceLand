@@ -19,37 +19,22 @@ public class MainActivity extends AppCompatActivity
 		setContentView(R.layout.activity_main);
 	}
 
-	public void forceLand()
-	{
-		if (!LandUtils.checkWriteSettingsPermission(MainActivity.this))
-			startActivityForResult(LandUtils.preparePermissionIntent(MainActivity.this,
-					  LandUtils.REQ_WRITE_SETTINGS), LandUtils.REQ_WRITE_SETTINGS);
-		else
-		{
-			if (!LandUtils.checkDrawOverlayPermisson(MainActivity.this))
-				startActivityForResult(LandUtils.preparePermissionIntent(MainActivity.this,
-						  LandUtils.REQ_DRAW_OVERLAY), LandUtils.REQ_DRAW_OVERLAY);
-			else
-				LandUtils.forceOrientation(MainActivity.this, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		}
-	}
-
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if (requestCode == LandUtils.REQ_WRITE_SETTINGS)
-			if (!LandUtils.checkDrawOverlayPermisson(MainActivity.this))
-				startActivityForResult(LandUtils.preparePermissionIntent(MainActivity.this,
-						  LandUtils.REQ_DRAW_OVERLAY), LandUtils.REQ_DRAW_OVERLAY);
+		if (requestCode == LandUtils.REQ_WRITE_SETTINGS || requestCode == LandUtils.REQ_DRAW_OVERLAY)
+			if (!LandUtils.checkWriteSettingsPermission(MainActivity.this) ||
+							!LandUtils.checkDrawOverlayPermisson(MainActivity.this))
+				LandUtils.disable();
 	}
 
 	@Override
 	public void onStart()
 	{
 		super.onStart();
-		forceLand();
+		LandUtils.forceOrientation(MainActivity.this, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 	}
 
 	public void open(View view)
