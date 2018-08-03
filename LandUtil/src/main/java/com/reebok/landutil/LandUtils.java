@@ -98,14 +98,14 @@ public class LandUtils
 		if (!ENABLED)
 			return;
 
-		if (!LandUtils.checkWriteSettingsPermission(activity))
-			LandUtils.requestPermission(activity, LandUtils.REQ_WRITE_SETTINGS);
+		if (!checkWriteSettingsPermission(activity))
+			requestPermission(activity, REQ_WRITE_SETTINGS);
 		else
 		{
-			if (!LandUtils.checkDrawOverlayPermisson(activity))
-				LandUtils.requestPermission(activity, LandUtils.REQ_DRAW_OVERLAY);
+			if (!checkDrawOverlayPermisson(activity))
+				requestPermission(activity, REQ_DRAW_OVERLAY);
 			else
-				LandUtils.rotateIt(activity, activityInfoOrientation);
+				rotateIt(activity, activityInfoOrientation);
 		}
 	}
 }
