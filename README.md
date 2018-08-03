@@ -19,6 +19,6 @@ and
 
 ```
 	dependencies {
-		implementation 'com.github.User:Repo:Tag'
+		implementation 'com.github.oskuhsiu:CYForceLand:1.0'
 	}
 ```
