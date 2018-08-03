@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if (requestCode == LandUtils.REQ_WRITE_SETTINGS || requestCode == LandUtils.REQ_DRAW_OVERLAY)
-			if (!LandUtils.checkWriteSettingsPermission(MainActivity.this) ||
-							!LandUtils.checkDrawOverlayPermisson(MainActivity.this))
-				LandUtils.disable();
+//		if (requestCode == LandUtils.REQ_WRITE_SETTINGS || requestCode == LandUtils.REQ_DRAW_OVERLAY)
+//			if (!LandUtils.checkWriteSettingsPermission(MainActivity.this) ||
+//							!LandUtils.checkDrawOverlayPermisson(MainActivity.this))
+//				LandUtils.disable();
 	}
 
 	@Override

@@ -57,7 +57,7 @@ public class LandUtils
 			intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,
 												Uri.parse("package:" + activity.getPackageName()));
 		else if (req == REQ_DRAW_OVERLAY)
-			intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,
+			intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
 												Uri.parse("package:" + activity.getPackageName()));
 
 		if (intent != null)
