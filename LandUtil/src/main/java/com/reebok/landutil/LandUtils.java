@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.provider.Settings;
@@ -51,6 +52,11 @@ public class LandUtils
 	{
 		if (!ENABLED)
 			return;
+
+		if((activity.getApplicationInfo().flags & ApplicationInfo.FLAG_SYSTEM) != 0)
+		{
+			return;
+		}
 
 		Intent intent = null;
 		if (req == REQ_WRITE_SETTINGS)
